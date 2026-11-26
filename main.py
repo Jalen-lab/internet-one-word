@@ -31,6 +31,10 @@ WORD = "circus"
 
 
 def main() -> None:
+    if not 1 <= len(WORD) <= 30:
+        raise ValueError(f"entry word must be 1-30 characters, got {len(WORD)}")
+    if any(char.isspace() for char in WORD):
+        raise ValueError("entry must be a single word with no whitespace")
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as handle:
         handle.write(WORD)
